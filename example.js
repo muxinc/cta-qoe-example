@@ -16,8 +16,10 @@ var lastWatchTimeCheck;
 var watchTimeInterval;
 
 function updateWatchTime() {
-  watchTime = watchTime + (Date.now() - lastWatchTimeCheck);
-  lastWatchTimeCheck = Date.now();
+  var now = Date.now();
+
+  watchTime = watchTime + (now - lastWatchTimeCheck);
+  lastWatchTimeCheck = now;
 }
 
 player.addEventListener('playrequest', function(){
@@ -57,8 +59,10 @@ var rebufferInterval;
 var lastRebufferCheck;
 
 function updateRebufferMetrics() {
-  rebufferDuration = rebufferDuration + (Date.now() - lastRebufferCheck);
-  lastRebufferCheck = Date.now();
+  var now = Date.now();
+
+  rebufferDuration = rebufferDuration + (now - lastRebufferCheck);
+  lastRebufferCheck = now;
   rebufferPercentage = rebufferDuration / watchTime;
   rebufferFrequency = rebufferCount / watchTime;
 }
